@@ -2,7 +2,7 @@
 
 Site institucional da **IRAWO Produções** — produtora audiovisual dedicada a lançamentos musicais, venda de shows e produção executiva, com direção estética afrofuturista.
 
-🔗 **[Ver site publicado](#)** *(adicione aqui o link depois de publicar)*
+🔗 Brevemente o o link do Site estara aqui!
 
 ---
 
