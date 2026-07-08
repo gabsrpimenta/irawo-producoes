@@ -1,0 +1,129 @@
+/* ============================================================================
+   IRAWO PRODUÇÕES — Design System (Feed Minimalista + Tipografia Amarela)
+   ----------------------------------------------------------------------------
+   Estética: Preto Profundo + Tipografia Amarelo Solar Oficial + Muito Respiro.
+   ============================================================================ */
+
+/* Fontes — Instrument Serif (display) + Inter (corpo).
+   Carregadas via <link> no index.html (não @import), pois @import bloqueia
+   o parsing do CSS e atrasa a primeira renderização da página. */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----------------------------------------------------------------------------
+   1. TOKENS — Variáveis de cores (Fundo Escuro + Letras Amarelo Solar)
+   ---------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    /* Paleta Principal — Fundo preto absoluto para o respiro premium */
+    --background: 0 0% 0%;           /* Preto puro e profundo (#000000) */
+    --foreground: 42 83% 53%;       /* LETRAS PRINCIPAIS: O Amarelo Solar vibrante do Instagram! */
+
+    /* Cards e Popovers — Leve variação do preto base */
+    --card: 0 0% 4%;
+    --card-foreground: 42 83% 53%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 42 83% 53%;
+
+    /* Acento (Mantido o amarelo solar como a estrela-guia do site) */
+    --primary: 42 83% 53%;          
+    --primary-foreground: 0 0% 0%;
+
+    /* Tons Neutros de Suporte (Para equilibrar e dar hierarquia à leitura) */
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 36 12% 92%; /* Um off-white elegante para subtextos sutis */
+    --muted: 0 0% 6%;
+    --muted-foreground: 0 0% 60%;   /* Cinza fosco para linhas menores e anos de portfólio */
+    --accent: 42 83% 53%;
+    --accent-foreground: 0 0% 0%;
+    
+    /* Bordas e Divisórias que herdam o corte sutil e limpo */
+    --border: 42 83% 53% / 0.2;     /* Linhas finas amarelas com transparência elegante */
+    --input: 42 83% 53% / 0.2;
+    --ring: 42 83% 53%;
+
+    /* Estética: Mantendo as famosas quinas retas (0) do estilo feed original */
+    --radius: 0rem;
+    --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* Compatibilidade Sidebar */
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 42 83% 53%;
+    --sidebar-primary: 42 83% 53%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-border: 42 83% 53% / 0.2;
+    --sidebar-ring: 42 83% 53%;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   2. RESET & BASE — Estilos fundamentais
+   ---------------------------------------------------------------------------- */
+@layer base {
+  * { @apply border-border; }
+  
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.005em;
+  }
+
+  /* Títulos em Serif com o Amarelo Solar para impacto cinematográfico */
+  h1, h2, h3, h4, .font-serif-display {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+
+  /* Destaque ao selecionar os textos */
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+    color: #ffffff;
+  }
+
+  /* Foco visível customizado para navegação por teclado.
+     Usa o amarelo solar da marca (--ring) em vez do outline padrão do navegador,
+     que fica quase invisível sobre o fundo preto. Só aparece com :focus-visible,
+     ou seja, em navegação por teclado — cliques de mouse não disparam o anel. */
+  a, button, input, textarea, select, [tabindex]:not([tabindex="-1"]) {
+    @apply outline-none;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    @apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   3. UTILITÁRIOS — Classes personalizadas e Animações
+   ---------------------------------------------------------------------------- */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  /* Efeito de surgimento suave vindo de baixo */
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up { 
+    animation: fade-up 1s var(--transition-smooth) both; 
+  }
+
+  /* Efeito de transparência simples */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .animate-fade-in { 
+    animation: fade-in 1.4s var(--transition-smooth) both; 
+  }
+}
