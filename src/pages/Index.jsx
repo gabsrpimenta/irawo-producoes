@@ -26,7 +26,7 @@ const Index = () => {
       <Navbar />   {/* Menu superior */}
       <Hero />     {/* Seção de impacto inicial */}
       
-      {/* 2. IMPLEMENTAÇÃO: */}
+      {/* 2. IMPLEMENTAÇÃO: Adicione a tag abaixo para os números 01, 02 e 03 aparecerem aqui */}
       <Pillars />  {/* Eixos de Valor: Propósito, Missão e Valores */}
       
       <Services /> {/* Listagem de serviços (Audiovisual, Palco, Branded) */}
