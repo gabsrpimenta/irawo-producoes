@@ -17,7 +17,7 @@ export const Contact = () => {
   const MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Vidigal,+Rio+de+Janeiro,+Brasil";
 
   return (
-    <section id="contato" className="py-32 px-6 lg:px-10 border-t border-border bg-neutral-950/20">
+    <section id="contato" className="py-16 md:py-24 lg:py-32 px-6 lg:px-10 border-t border-border bg-neutral-950/20">
       <div className="max-w-6xl mx-auto">
         
         <div className="grid md:grid-cols-12 gap-12 md:gap-16">

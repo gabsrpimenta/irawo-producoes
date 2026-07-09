@@ -54,7 +54,7 @@ export const About = () => {
   ];
 
   return (
-    <section id="sobre" className="py-32 md:py-44 px-6 lg:px-10 border-t border-border scroll-mt-20">
+    <section id="sobre" className="py-16 md:py-32 lg:py-44 px-6 lg:px-10 border-t border-border scroll-mt-20">
       <div className="max-w-6xl mx-auto">
         
         {/* Título da seção — visualmente oculto; garante um h2 fixo independente da aba ativa */}
@@ -117,7 +117,7 @@ export const About = () => {
               </div>
 
               {/* Lado Direito: Textos e Manifesto Institucional */}
-              <div className="md:col-span-7 space-y-6 text-lg leading-relaxed text-foreground/90 animate-fade-up flex flex-col justify-between min-h-[350px]">
+              <div className="md:col-span-7 space-y-6 text-lg leading-relaxed text-foreground/90 animate-fade-up flex flex-col justify-between md:min-h-[350px]">
                 <div className="space-y-6">
                   {ABOUT_DATA.casa.paragraphs.map((text, i) => <p key={i}>{text}</p>)}
                 </div>
@@ -189,7 +189,7 @@ export const About = () => {
                 </div>
               </div>
 
-              <div className="md:col-span-7 space-y-6 text-lg leading-relaxed text-foreground/90 animate-fade-up flex flex-col justify-between min-h-[350px]">
+              <div className="md:col-span-7 space-y-6 text-lg leading-relaxed text-foreground/90 animate-fade-up flex flex-col justify-between md:min-h-[350px]">
                 <div className="space-y-6">
                   {ABOUT_DATA.movimento.paragraphs.map((text, i) => <p key={i}>{text}</p>)}
                 </div>

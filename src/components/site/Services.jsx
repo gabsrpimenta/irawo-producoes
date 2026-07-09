@@ -50,7 +50,7 @@ const SERVICES_DATA = [
 
 export const Services = () => {
   return (
-    <section id="servicos" className="py-32 md:py-44 px-6 lg:px-10 border-t border-border">
+    <section id="servicos" className="py-16 md:py-32 lg:py-44 px-6 lg:px-10 border-t border-border">
       <div className="max-w-6xl mx-auto">
         
         {/* Cabeçalho da Seção */}

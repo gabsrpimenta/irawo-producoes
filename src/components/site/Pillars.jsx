@@ -25,7 +25,7 @@ const PILLARS_DATA = [
 
 export const Pillars = () => {
   return (
-    <section className="py-24 md:py-36 px-6 lg:px-10 border-t border-border bg-neutral-950/20">
+    <section className="py-12 md:py-24 lg:py-36 px-6 lg:px-10 border-t border-border bg-neutral-950/20">
       <div className="max-w-6xl mx-auto">
         
         {/* Título da seção — visualmente oculto para não alterar o design, mas necessário para a hierarquia semântica de headings (h2 antes dos h3 dos pilares) */}

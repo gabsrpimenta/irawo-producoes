@@ -116,7 +116,7 @@ export const Feed = () => {
   }, []);
 
   return (
-    <section id="portfolio" ref={containerRef} onMouseMove={handleMouseMove} className="relative py-32 md:py-44 px-6 lg:px-10 border-t border-border select-none">
+    <section id="portfolio" ref={containerRef} onMouseMove={handleMouseMove} className="relative py-16 md:py-32 lg:py-44 px-6 lg:px-10 border-t border-border select-none">
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Cabeçalho */}
@@ -136,15 +136,17 @@ export const Feed = () => {
               onMouseLeave={() => setHoveredImage(null)}
               className="py-8 grid md:grid-cols-12 gap-4 items-center group hover:bg-neutral-950/40 px-4 -mx-4 transition-all duration-300 cursor-pointer"
             >
-              {/* Ano */}
-              <div className="md:col-span-1 text-xs font-mono text-muted-foreground group-hover:text-primary transition-colors">
+              {/* Ano — no mobile, reordenado pra aparecer DEPOIS do título (order-2),
+                  já que título é a informação principal e deve ser lida primeiro.
+                  md:order-none restaura a ordem natural do DOM no grid de desktop. */}
+              <div className="order-2 md:order-none md:col-span-1 text-xs font-mono text-muted-foreground group-hover:text-primary transition-colors">
                 {item.year}
               </div>
 
               {/* Título da Produção — em mobile, vem com uma thumbnail fixa ao lado,
                   já que a imagem flutuante que aparece no hover é exclusiva de desktop
                   (não existe conceito de "hover" em telas de toque). */}
-              <div className="flex items-center gap-3 md:contents">
+              <div className="order-1 md:order-none flex items-center gap-3 md:contents">
                 <img
                   src={item.image}
                   alt={`Capa do projeto ${item.title}`}
@@ -160,12 +162,12 @@ export const Feed = () => {
               </div>
 
               {/* Atuação da Sabrina */}
-              <div className="md:col-span-2 text-xs uppercase tracking-widest text-foreground/70 group-hover:text-foreground transition-colors">
+              <div className="order-3 md:order-none md:col-span-2 text-xs uppercase tracking-widest text-foreground/70 group-hover:text-foreground transition-colors">
                 {item.role}
               </div>
 
               {/* Gênero / Categoria */}
-              <div className="md:col-span-3 text-sm text-muted-foreground group-hover:text-muted-foreground/80">
+              <div className="order-4 md:order-none md:col-span-3 text-sm text-muted-foreground group-hover:text-muted-foreground/80">
                 {item.category}
               </div>
 
