@@ -4,6 +4,7 @@
  */
 import { useState } from "react";
 import { Eyebrow } from "./Eyebrow";
+import { Reveal } from "./Reveal";
 import fotoSabrina from "@/assets/SabrinaRosa.webp";
 import imagemAfrofuturismo from "@/assets/AfrofuturismoCollage.webp";
 import imagemCasa from "@/assets/IrawoConcept.webp"; 
@@ -61,7 +62,7 @@ export const About = () => {
         <h2 className="sr-only">Sobre a IRAWO</h2>
 
         {/* CABEÇALHO E SELETOR DE ABAS */}
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-16 md:mb-20">
+        <Reveal className="flex items-end justify-between flex-wrap gap-6 mb-16 md:mb-20">
           <Eyebrow>Sobre</Eyebrow>
 
           <div role="tablist" className="flex gap-6 md:gap-8 text-sm">
@@ -84,7 +85,7 @@ export const About = () => {
               );
             })}
           </div>
-        </div>
+        </Reveal>
 
         {/* EXIBIÇÃO DE CONTEÚDO DINÂMICO */}
         <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">

@@ -3,6 +3,7 @@
  * Configurada com links diretos para WhatsApp, Instagrams, E-mail e Google Maps.
  */
 import { Eyebrow } from "./Eyebrow";
+import { Reveal } from "./Reveal";
 
 export const Contact = () => {
   // Configuração dos links diretos de redirecionamento oficiais
@@ -23,7 +24,7 @@ export const Contact = () => {
         <div className="grid md:grid-cols-12 gap-12 md:gap-16">
           
           {/* Lado Esquerdo: Chamada de Ação */}
-          <div className="md:col-span-5 space-y-4">
+          <Reveal className="md:col-span-5 space-y-4">
             <Eyebrow>Conexões</Eyebrow>
             <h2 className="font-serif-display text-4xl md:text-5xl tracking-tight text-foreground">
               Vamos construir o <span className="italic">futuro</span> juntos.
@@ -31,10 +32,10 @@ export const Contact = () => {
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
               Entre em contato para alinhar novos roteiros, parcerias de branded content ou direções lúdicas para palcos.
             </p>
-          </div>
+          </Reveal>
 
           {/* Lado Direito: Canais de Comunicação Oficial com Links */}
-          <div className="md:col-span-7 grid sm:grid-cols-2 gap-8 pt-6 md:pt-0">
+          <Reveal delay={150} className="md:col-span-7 grid sm:grid-cols-2 gap-8 pt-6 md:pt-0">
             
             {/* Bloco: E-mail (REDIRECIONAMENTO ATIVO) */}
             <div className="space-y-1">
@@ -115,7 +116,7 @@ export const Contact = () => {
               </div>
             </div>
 
-          </div>
+          </Reveal>
         </div>
 
       </div>

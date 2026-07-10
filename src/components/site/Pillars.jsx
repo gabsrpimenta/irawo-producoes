@@ -5,6 +5,8 @@
  */
 
 // Estrutura de dados que centraliza as informações dos eixos da produtora
+import { Reveal } from "./Reveal";
+
 const PILLARS_DATA = [
   {
     number: "01",
@@ -34,7 +36,7 @@ export const Pillars = () => {
         {/* Grid de 3 colunas, uma para cada número/pilar */}
         <div className="grid md:grid-cols-3 gap-12 md:gap-8">
           {PILLARS_DATA.map((pillar, index) => (
-            <div key={index} className="space-y-6 group">
+            <Reveal key={index} delay={index * 120} className="space-y-6 group">
               
               {/* Numeração Gigante Estilizada */}
               {/* O efeito "group-hover" faz com que o número ganhe a cor principal (primary) com suavidade ao passar o rato pelo bloco */}
@@ -52,7 +54,7 @@ export const Pillars = () => {
                 {pillar.description}
               </p>
               
-            </div>
+            </Reveal>
           ))}
         </div>
 

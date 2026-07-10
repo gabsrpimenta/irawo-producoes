@@ -3,6 +3,7 @@
  */
 import { useState, useEffect, useRef } from "react";
 import { Eyebrow } from "./Eyebrow";
+import { Reveal } from "./Reveal";
 
 // 1. IMPORTAÇÃO DAS IMAGENS (Substitua pelos caminhos/nomes reais que salvar no seu assets)
 import capaCidadeDeDeusSerie from "@/assets/portfolio/cidade_de_deus_serie.webp";
@@ -120,15 +121,15 @@ export const Feed = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Cabeçalho */}
-        <div className="mb-20">
+        <Reveal className="mb-20">
           <Eyebrow className="mb-3">Trajetória em Tela</Eyebrow>
           <h2 className="font-serif-display text-4xl md:text-6xl tracking-tight text-foreground">
             Obras e <span className="italic">Portfólio</span> corporativo.
           </h2>
-        </div>
+        </Reveal>
 
         {/* Lista de Obras em Formato de Linhas Minimalistas */}
-        <ul className="border-t border-border divide-y divide-border/60 list-none">
+        <Reveal delay={150} as="ul" className="border-t border-border divide-y divide-border/60 list-none">
           {PORTFOLIO_ITEMS.map((item, index) => (
             <li 
               key={index} 
@@ -177,7 +178,7 @@ export const Feed = () => {
               </div>
             </li>
           ))}
-        </ul>
+        </Reveal>
       </div>
 
       {/* ELEMENTO CRIATIVO: Imagem Flutuante (Apenas para Desktop para evitar bugs em toque mobile) */}

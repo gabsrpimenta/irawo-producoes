@@ -4,6 +4,7 @@
  */
 import { Clapperboard, Tv, Film, Theater, Share2, ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "./Eyebrow";
+import { Reveal } from "./Reveal";
 
 const SERVICES_DATA = [
   {
@@ -54,17 +55,17 @@ export const Services = () => {
       <div className="max-w-6xl mx-auto">
         
         {/* Cabeçalho da Seção */}
-        <div className="mb-24 max-w-xl">
+        <Reveal className="mb-24 max-w-xl">
           <Eyebrow className="mb-3">O que fazemos</Eyebrow>
           <h2 className="font-serif-display text-4xl md:text-6xl tracking-tight text-foreground">
             Linguagem <span className="italic text-muted-foreground">moderna</span> no ecossistema cultural.
           </h2>
-        </div>
+        </Reveal>
 
         {/* Listagem Estruturada e Linear */}
         <div className="space-y-20">
           {SERVICES_DATA.map((group, groupIndex) => (
-            <div key={groupIndex} className="grid md:grid-cols-12 gap-6 items-start">
+            <Reveal key={groupIndex} delay={groupIndex * 100} className="grid md:grid-cols-12 gap-6 items-start">
               
               {/* Coluna da Esquerda: Nome da Categoria — sticky só quando o grupo tem
                   itens suficientes pra dar espaço de rolagem ao efeito (senão o "stick"
@@ -111,7 +112,7 @@ export const Services = () => {
                 })}
               </div>
 
-            </div>
+            </Reveal>
           ))}
         </div>
 
