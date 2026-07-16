@@ -32,7 +32,7 @@ export const Navbar = () => {
               {link.label}
             </a>
           ))}
-          <a href="#contato" className="text-foreground border border-border px-4 py-2 hover:bg-foreground hover:text-background transition-all">
+          <a href="#contato" className="text-foreground border border-border px-4 py-2 hover:bg-foreground hover:text-background hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)] transition-all">
             Contato
           </a>
         </div>
@@ -69,7 +69,7 @@ export const Navbar = () => {
           <a
             href="#contato"
             onClick={() => setIsOpen(false)}
-            className="text-foreground border border-border px-4 py-3 text-center hover:bg-foreground hover:text-background transition-all"
+            className="text-foreground border border-border px-4 py-3 text-center hover:bg-foreground hover:text-background hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)] transition-all"
           >
             Contato
           </a>

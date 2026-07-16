@@ -5,7 +5,6 @@
 import { Navbar }   from "@/components/site/Navbar";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { Hero }     from "@/components/site/Hero";
-import { Stats }    from "@/components/site/Stats";
 import { Pillars } from "@/components/site/Pillars";
 import { Services } from "@/components/site/Services";
 import { Feed }     from "@/components/site/Feed";
@@ -30,7 +29,6 @@ const Index = () => {
 
       <Navbar />   {/* Menu superior */}
       <Hero />     {/* Seção de impacto inicial */}
-      <Stats />    {/* Números reais: anos de trajetória, produções, veículos parceiros */}
       
       {/* 2. IMPLEMENTAÇÃO: Adicione a tag abaixo para os números 01, 02 e 03 aparecerem aqui */}
       <Pillars />  {/* Eixos de Valor: Propósito, Missão e Valores */}

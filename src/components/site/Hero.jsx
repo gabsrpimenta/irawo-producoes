@@ -28,7 +28,7 @@ export const Hero = () => {
           <div className="pt-4 animate-fade-up">
             <a
               href="#sobre"
-              className="border border-border px-6 py-3 text-[10px] uppercase tracking-widest text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
+              className="border border-border px-6 py-3 text-[10px] uppercase tracking-widest text-foreground hover:bg-foreground hover:text-background hover:shadow-[0_0_24px_hsl(var(--primary)/0.5)] transition-all duration-300"
             >
               Conhecer a Casa ↓
             </a>
@@ -69,7 +69,7 @@ export const Hero = () => {
       </div>
 
       {/* Estrela Decorativa */}
-      <div className="absolute bottom-10 right-6 lg:right-10 text-primary/40 text-3xl font-serif-display select-none animate-pulse">
+      <div className="absolute bottom-10 right-6 lg:right-10 text-primary text-3xl font-serif-display select-none animate-star-glow">
         ✶
       </div>
     </section>
