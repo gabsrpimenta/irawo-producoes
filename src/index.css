@@ -73,6 +73,26 @@
     letter-spacing: 0.005em;
   }
 
+  /* Textura de grão sutil sobre toda a página — dá uma sensação de filme
+     analógico, combinando com a proposta cinematográfica da IRAWO.
+     Implementada 100% em CSS (ruído gerado via filtro SVG de turbulência,
+     sem nenhuma imagem baixada), então tem custo de performance
+     praticamente nulo — funciona idêntico em mobile e desktop.
+     `pointer-events: none` garante que nunca bloqueia cliques/toques,
+     e a opacidade é bem baixa (3.5%) pra não comprometer o contraste de
+     texto que já validamos em outra etapa. */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
   /* Títulos em Serif com o Amarelo Solar para impacto cinematográfico */
   h1, h2, h3, h4, .font-serif-display {
     font-family: 'Instrument Serif', Georgia, serif;
