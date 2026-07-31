@@ -21,6 +21,7 @@ const PORTFOLIO_ITEMS = [
     title: "Cidade de Deus: A Série",
     role: "Atriz",
     category: "Drama · Série",
+    filterGroup: "tv",
     platform: "HBO Max",
     year: "2024",
     image: capaCidadeDeDeusSerie
@@ -29,6 +30,7 @@ const PORTFOLIO_ITEMS = [
     title: "How To Be A Carioca",
     role: "Roteirista",
     category: "Comédia · Série",
+    filterGroup: "tv",
     platform: "Star+",
     year: "2023",
     image: capaHowToBeCarioca
@@ -37,6 +39,7 @@ const PORTFOLIO_ITEMS = [
     title: "Vai Na Fé",
     role: "Roteirista",
     category: "Drama · Novela",
+    filterGroup: "tv",
     platform: "TV Globo",
     year: "2023",
     image: capaVaiNaFe
@@ -45,6 +48,7 @@ const PORTFOLIO_ITEMS = [
     title: "Vicky e a Musa",
     role: "Roteirista",
     category: "Comédia Musical · Série",
+    filterGroup: "tv",
     platform: "Globoplay",
     year: "2023",
     image: capaVickyMusa
@@ -53,6 +57,7 @@ const PORTFOLIO_ITEMS = [
     title: "Criança Esperança",
     role: "Roteirista",
     category: "Talk Show",
+    filterGroup: "tv",
     platform: "TV Globo",
     year: "2022",
     image: capaCriancaEsperanca
@@ -61,6 +66,7 @@ const PORTFOLIO_ITEMS = [
     title: "Arezzo Alto Verão",
     role: "Roteirista",
     category: "Campanha Institucional",
+    filterGroup: "branded",
     platform: "Mídias Sociais",
     year: "2022/2023",
     image: capaArezzo
@@ -69,6 +75,7 @@ const PORTFOLIO_ITEMS = [
     title: "Poder",
     role: "Diretora e Roteirista",
     category: "Drama · Curta-Metragem",
+    filterGroup: "cinema",
     platform: "Produção Independente",
     year: "2018",
     image: capaPoder
@@ -77,6 +84,7 @@ const PORTFOLIO_ITEMS = [
     title: "Vamos Fazer um Brinde",
     role: "Diretora e Roteirista",
     category: "Drama · Longa-Metragem",
+    filterGroup: "cinema",
     platform: "Cinema (Histórico)",
     year: "2011",
     image: capaVamosFazerUmBrinde
@@ -85,18 +93,35 @@ const PORTFOLIO_ITEMS = [
     title: "Cidade de Deus",
     role: "Atriz",
     category: "Drama · Longa-Metragem",
+    filterGroup: "cinema",
     platform: "Cinema",
     year: "2002",
     image: capaCidadeDeDeusFilme
   }
 ];
 
+// Filtros disponíveis — os rótulos e a ordem que aparecem nos botões.
+// "todos" sempre existe e mostra o portfólio completo.
+const FILTERS = [
+  { key: "todos", label: "Todos" },
+  { key: "tv", label: "TV & Streaming" },
+  { key: "cinema", label: "Cinema" },
+  { key: "branded", label: "Institucional" },
+];
+
 export const Feed = () => {
   // Estados para gerenciar qual imagem exibir e a posição do mouse
   const [hoveredImage, setHoveredImage] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [activeFilter, setActiveFilter] = useState("todos");
   const containerRef = useRef(null);
   const rafId = useRef(null);
+
+  // Lista filtrada — "todos" mostra tudo, senão só os itens do grupo selecionado
+  const filteredItems =
+    activeFilter === "todos"
+      ? PORTFOLIO_ITEMS
+      : PORTFOLIO_ITEMS.filter((item) => item.filterGroup === activeFilter);
 
   // Atualiza a posição do cursor com throttle via requestAnimationFrame (no máx. 1x por frame),
   // e apenas enquanto o mouse estiver sobre esta seção (não mais em toda a página).
@@ -128,9 +153,31 @@ export const Feed = () => {
           </h2>
         </Reveal>
 
+        {/* Botões de Filtro por Tipo de Produção — área de toque confortável
+            (py-2.5 = ~40px de altura), sem depender de hover pra funcionar
+            bem em toque. aria-pressed indica o filtro ativo pra leitores
+            de tela, já que a diferença visual sozinha não é suficiente. */}
+        <Reveal delay={80} className="flex flex-wrap gap-3 mb-10">
+          {FILTERS.map((filter) => (
+            <button
+              key={filter.key}
+              type="button"
+              onClick={() => setActiveFilter(filter.key)}
+              aria-pressed={activeFilter === filter.key}
+              className={`px-4 py-2.5 text-[11px] uppercase tracking-widest border transition-all duration-300 ${
+                activeFilter === filter.key
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border text-muted-foreground hover:border-primary/60 hover:text-foreground"
+              }`}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </Reveal>
+
         {/* Lista de Obras em Formato de Linhas Minimalistas */}
         <Reveal delay={150} as="ul" className="border-t border-border divide-y divide-border/60 list-none">
-          {PORTFOLIO_ITEMS.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <li 
               key={index} 
               onMouseEnter={() => setHoveredImage(item.image)}
