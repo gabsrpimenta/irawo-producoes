@@ -5,6 +5,7 @@
 import { useState } from "react";
 import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
+import { useParallax } from "@/hooks/useParallax";
 import fotoSabrina from "@/assets/SabrinaRosa.webp";
 import imagemAfrofuturismo from "@/assets/AfrofuturismoCollage.webp";
 import imagemCasa from "@/assets/IrawoConcept.webp"; 
@@ -47,6 +48,10 @@ const ABOUT_DATA = {
 
 export const About = () => {
   const [tab, setTab] = useState("casa");
+  // Compartilhado entre as 3 imagens das abas — só uma fica montada no DOM
+  // por vez (renderização condicional por aba), então uma instância só do
+  // hook já basta.
+  const [parallaxRef, parallaxOffset] = useParallax(0.08);
 
   const tabs = [
     { id: "casa",      label: "A Casa"      },
@@ -97,6 +102,7 @@ export const About = () => {
               <div className="md:col-span-5 animate-fade-up space-y-4">
                 <div className="relative aspect-[4/5] w-full overflow-hidden border border-border bg-neutral-950">
                   <img 
+                    ref={parallaxRef}
                     src={imagemCasa} 
                     width="960"
                     height="1001"
@@ -104,6 +110,7 @@ export const About = () => {
                     decoding="async"
                     alt="Ecossistema e Conceito Estético IRAWO" 
                     className="w-full h-full object-cover object-center filter grayscale contrast-115 hover:grayscale-0 transition-all duration-700"
+                    style={{ transform: `scale(1.1) translateY(${parallaxOffset}px)` }}
                   />
                 </div>
                 <div>
@@ -136,6 +143,7 @@ export const About = () => {
               <div className="md:col-span-5 animate-fade-up space-y-4">
                 <div className="relative aspect-[4/5] w-full overflow-hidden border border-border bg-neutral-950">
                   <img 
+                    ref={parallaxRef}
                     src={fotoSabrina} 
                     width="960"
                     height="1270"
@@ -143,6 +151,7 @@ export const About = () => {
                     decoding="async"
                     alt="Sabrina Rosa - Fundadora da IRAWO" 
                     className="w-full h-full object-cover object-center filter grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
+                    style={{ transform: `scale(1.1) translateY(${parallaxOffset}px)` }}
                   />
                 </div>
                 <div>
@@ -170,6 +179,7 @@ export const About = () => {
               <div className="md:col-span-5 animate-fade-up space-y-4">
                 <div className="relative aspect-[4/5] w-full overflow-hidden border border-border bg-neutral-950">
                   <img 
+                    ref={parallaxRef}
                     src={imagemAfrofuturismo} 
                     width="960"
                     height="1299"
@@ -177,6 +187,7 @@ export const About = () => {
                     decoding="async"
                     alt="Movimento Afrofuturista - IRAWO" 
                     className="w-full h-full object-cover object-center filter grayscale contrast-115 hover:grayscale-0 transition-all duration-700"
+                    style={{ transform: `scale(1.1) translateY(${parallaxOffset}px)` }}
                   />
                 </div>
                 <div>

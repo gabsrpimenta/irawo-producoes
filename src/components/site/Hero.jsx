@@ -3,8 +3,11 @@
  * Fundo Preto + Tipografia Amarela + Colagem como Textura sob o Eixo Criativo
  */
 import heroCollage from "@/assets/HeroCollage.webp";
+import { useParallax } from "@/hooks/useParallax";
 
 export const Hero = () => {
+  const [parallaxRef, parallaxOffset] = useParallax(0.1);
+
   return (
     <section id="conteudo-principal" className="relative min-h-screen flex items-center px-6 lg:px-10 pt-32 pb-24 overflow-hidden">
       <div className="max-w-6xl mx-auto w-full grid md:grid-cols-12 gap-8 items-center">
@@ -41,6 +44,7 @@ export const Hero = () => {
           {/* A Colagem funcionando de forma abstrata e imersiva no fundo */}
           <div className="absolute inset-0 -z-10 opacity-20 mix-blend-luminosity pointer-events-none overflow-hidden">
             <img 
+              ref={parallaxRef}
               src={heroCollage} 
               width="900"
               height="943"
@@ -48,6 +52,7 @@ export const Hero = () => {
               fetchPriority="high"
               decoding="async"
               className="w-full h-full object-cover" 
+              style={{ transform: `scale(1.1) translateY(${parallaxOffset}px)` }}
               alt="" 
             />
             {/* Máscara de transição para o preto absoluto não quebrar a lateral esquerda */}

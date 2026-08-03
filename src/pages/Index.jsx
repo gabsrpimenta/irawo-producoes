@@ -4,6 +4,8 @@
  */
 import { Navbar }   from "@/components/site/Navbar";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
+import { CustomCursor } from "@/components/site/CustomCursor";
+import { IntroLoader } from "@/components/site/IntroLoader";
 import { Hero }     from "@/components/site/Hero";
 import { Pillars } from "@/components/site/Pillars";
 import { Services } from "@/components/site/Services";
@@ -15,8 +17,15 @@ import { Footer }   from "@/components/site/Footer";
 const Index = () => {
   return (
     <main className="min-h-screen bg-background text-foreground">
+      {/* Tela de abertura breve com a estrela da marca — aparece só uma vez
+          por sessão do navegador, e nunca pra quem prefere reduzir movimento */}
+      <IntroLoader />
+
       {/* Barra fina de progresso de leitura — fixa no topo, acima até da Navbar */}
       <ScrollProgress />
+
+      {/* Cursor customizado — só ativa em desktop (detecta ponteiro fino) */}
+      <CustomCursor />
 
       {/* Link "pular para o conteúdo" — invisível até receber foco de teclado (Tab).
           Ajuda quem navega sem mouse a pular a Navbar fixa e ir direto ao conteúdo. */}
@@ -30,7 +39,6 @@ const Index = () => {
       <Navbar />   {/* Menu superior */}
       <Hero />     {/* Seção de impacto inicial */}
       
-      {/* 2. IMPLEMENTAÇÃO: Adicione a tag abaixo para os números 01, 02 e 03 aparecerem aqui */}
       <Pillars />  {/* Eixos de Valor: Propósito, Missão e Valores */}
       
       <Services /> {/* Listagem de serviços (Audiovisual, Palco, Branded) */}

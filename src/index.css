@@ -157,6 +157,24 @@
     }
   }
 
+  /* "Entrada" da estrela na tela de loading inicial — um pop suave de
+     escala + opacidade, só uma vez, antes de acomodar. */
+  @keyframes intro-star {
+    0% { opacity: 0; transform: scale(0.6); }
+    60% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .animate-intro-star {
+    animation: intro-star 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-intro-star {
+      animation: none;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
   /* Efeito de surgimento suave vindo de baixo */
   @keyframes fade-up {
     from { opacity: 0; transform: translateY(16px); }
